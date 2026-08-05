@@ -1,0 +1,46 @@
+# 数据（REFUGE2 有许可条款，绝不能进仓库）
+data/
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.tif
+!docs/**/*.png
+
+# 权重
+*.pth
+*.pt
+*.ckpt
+RETFound_MAE/*.pth
+
+# 运行产物
+runs/
+outputs/
+results/
+phase4_report_*/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Notebook 输出（旧仓库里 test_cls.ipynb / test_seg.ipynb 的 cell 输出
+# 含硬编码绝对路径和用户名 —— 见开源清单 P0）
+*.ipynb_checkpoints/
+RETFound_MAE/
+code_origin/
+{retfound_common,phase1/
+files/
+final_report.py
+CHANGELOG_FIXES.md
+IMPROVEMENT_ROADMAP.md
+RUNBOOK.md
+README.md
+
+.pytest_cache/
+.vscode/
+REFUGE2/
