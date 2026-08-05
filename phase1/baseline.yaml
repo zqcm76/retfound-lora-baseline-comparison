@@ -1,0 +1,34 @@
+# Phase 1 baseline configuration.
+# 针对单卡 12GB (RTX 3060) 保守设置；需要更大有效 batch 就调高 grad_accum_steps。
+experiment: baseline
+output_dir: outputs
+
+data:
+  # FIX: 原文是 E:/RETFound/phase1/data/data_all.csv —— 硬编码绝对路径。
+  # 用相对路径，或用 --index 覆盖。
+  refuge_index: data/data_all.csv
+  image_size: 512        # 分割分辨率 (必须是 16 的倍数)
+  cls_image_size: 224    # 分类分辨率
+  num_seg_classes: 3     # 0=bg, 1=rim, 2=cup
+  val_split: 0.2
+  num_workers: 4         # Windows 上如遇 dataloader 问题设 0
+  pin_memory: true
+
+model:
+  pretrained: true
+  unet_base_channels: 32
+
+train:
+  epochs: 50
+  batch_size: 8
+  lr: 0.0003
+  weight_decay: 0.0001
+  grad_accum_steps: 1
+  amp: true
+  # 青光眼是稀有类 (REFUGE2 约 1:9)。注意：用了 pos_weight 之后 sigmoid 输出
+  # 不再是校准概率，0.5 也不再是合理判决点 —— 阈值必须在 val 上标定
+  # (见 evaluate.py --calibrate)。
+  pos_weight: 9.0
+  seg_ce_weight: 1.0
+  seg_dice_weight: 1.0
+  seed: 42

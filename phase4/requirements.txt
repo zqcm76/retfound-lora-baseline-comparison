@@ -1,0 +1,8 @@
+# 阶段四依赖（评测/报告）。模型侧依赖见 phase2/requirements.txt。
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.5.1
+scikit-image==0.24.0
+opencv-python-headless==4.10.0.84   # FIX(U-8): 推理缩放必须与训练同一实现
+Pillow==10.4.0
+matplotlib==3.9.2

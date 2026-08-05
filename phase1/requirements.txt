@@ -1,0 +1,15 @@
+# Phase 1 (数据管道 + ResNet34 / UNet 基线)
+# FIX(C-10): 全部锁版本。原文件全是 `>=`，其中 albumentations>=1.3 尤其危险 ——
+# 2.x 对 A.Affine 的 cval / border_mode 做了破坏性改动，新环境装上会行为改变。
+torch==2.3.1
+torchvision==0.18.1
+albumentations==1.4.15        # 与 2.x API 不兼容，锁 1.x
+opencv-python-headless==4.10.0.84
+numpy==1.26.4                 # torch 2.3.1 配套用 numpy 1.x
+pandas==2.2.2
+scikit-learn==1.5.1
+PyYAML==6.0.2
+tqdm==4.66.5
+Pillow==10.4.0
+scipy==1.14.1
+pytest==8.3.3                 # FIX(C-7): 单元测试
