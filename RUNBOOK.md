@@ -139,7 +139,7 @@ python train.py --preset full \
 ```
 
 
-### 📌 顺手记录训练成本(修 U-3 需要)
+### 📌 顺手记录训练成本
 
 训练结束后手写一份 `phase2/runs/phase2_v2/train_meta.json`:
 
@@ -158,7 +158,7 @@ python train.py --preset full \
 峰值显存看 `nvidia-smi` 或 `torch.cuda.max_memory_allocated()/1e9`。
 **这几个数必须实测**，Step 5 的 `--train-meta-json` 会读这个文件;不提供就留 NaN,绝不臆造。
 
-### 建议同时跑 linear probe 对照(P1-5,一次运行回答"LoRA 买到了什么")
+### 建议同时跑 linear probe 对照(一次运行回答"LoRA 买到了什么")
 
 ```bash
 python train.py --preset full --freeze-lora \
